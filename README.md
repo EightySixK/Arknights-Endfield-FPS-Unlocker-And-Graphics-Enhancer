@@ -11,4 +11,4 @@ then run the unlocker exe and input the desired FPS value.
 Note:
 I am not responsible if this gets your account banned,
 I am personally yet to be banned however,
-So I believe this is safe to use.
+so I believe this is safe to use.
