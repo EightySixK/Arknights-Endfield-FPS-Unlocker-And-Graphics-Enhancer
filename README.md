@@ -1,8 +1,8 @@
-## This is an FPS unlocker for Arknights Endfield
+# This is an FPS unlocker for Arknights Endfield
 
 It supports custom values for FPS (or unlimited!)
 
-# BACK UP YOUR VULKAN-1.DLL BEFORE RUNNING
+**BACK UP YOUR VULKAN-1.DLL BEFORE RUNNING**
 
 ## --- HOW TO RUN ---
 
