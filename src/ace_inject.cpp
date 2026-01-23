@@ -4,6 +4,12 @@
 #include <string>
 #include <windows.h>
 
+// Required export for import injection (vulkan-1.dll imports this)
+extern "C" __declspec(dllexport) void DummyExport() {
+  // This function exists only to satisfy the import table
+  // The actual work is done in DllMain
+}
+
 // --- Configuration ---
 int g_targetFPS = 300; // Default, can be overridden by fps_config.txt
 
