@@ -41,7 +41,6 @@ int main() {
   std::cout << "==================================" << std::endl;
   std::cout << std::endl;
 
-  // Check if we're in the game directory
   if (GetFileAttributesW(L"Endfield_Data") == INVALID_FILE_ATTRIBUTES) {
     std::cout << "[ERROR] Please run this from the Endfield game folder!"
               << std::endl;
@@ -55,7 +54,6 @@ int main() {
   std::cout << "[OK] Game folder detected." << std::endl;
   std::cout << std::endl;
 
-  // Prompt for FPS
   int targetFPS = 300;
   std::cout << "Enter your desired FPS cap (-1 for unlimited, default: 300): ";
   std::string input;
@@ -77,7 +75,6 @@ int main() {
   std::cout << "[OK] Target FPS set to: " << targetFPS << std::endl;
   std::cout << std::endl;
 
-  // Write config file
   std::ofstream configFile("fps_config.txt");
   if (configFile.is_open()) {
     configFile << targetFPS;
@@ -85,11 +82,16 @@ int main() {
     std::cout << "[OK] Created fps_config.txt" << std::endl;
   }
 
-  // Extract embedded DLLs
   if (ExtractResource(IDR_ACE_INJECT_DLL, L"ace_inject.dll")) {
     std::cout << "[OK] Installed ace_inject.dll" << std::endl;
   } else {
     std::cout << "[ERROR] Failed to extract ace_inject.dll!" << std::endl;
+  }
+
+  if (ExtractResource(IDR_D3DCOMPILER_DLL, L"d3dcompiler_47.dll")) {
+    std::cout << "[OK] Installed d3dcompiler_47.dll" << std::endl;
+  } else {
+    std::cout << "[WARN] Failed to extract d3dcompiler_47.dll!" << std::endl;
   }
 
   if (ExtractResource(IDR_VULKAN_DLL, L"vulkan-1.dll")) {
@@ -98,7 +100,6 @@ int main() {
     std::cout << "[ERROR] Failed to extract vulkan-1.dll!" << std::endl;
   }
 
-  // Patch boot.config
   std::fstream bootConfig("Endfield_Data\\boot.config", std::ios::in);
   if (bootConfig.is_open()) {
     std::string content((std::istreambuf_iterator<char>(bootConfig)),

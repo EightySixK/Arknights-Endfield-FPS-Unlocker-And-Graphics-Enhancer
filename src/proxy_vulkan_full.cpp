@@ -1,7 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <windows.h>
 
-// --- Full Vulkan Export Forwarding ---
+// Vulkan export forwarding
+// I would recommend not using this and actually building from the vulkan source DLL,
+// then editing the loader_windows.c in the /loader/loader folder in the vulkan source
+// to add in the Payload into its main loop. I just cannot ship it like that on github.
 #pragma comment(linker, "/export:vkAcquireNextImage2KHR=C:\\Windows\\System32\\vulkan-1.vkAcquireNextImage2KHR")
 #pragma comment(linker, "/export:vkAcquireNextImageKHR=C:\\Windows\\System32\\vulkan-1.vkAcquireNextImageKHR")
 #pragma comment(linker, "/export:vkAllocateCommandBuffers=C:\\Windows\\System32\\vulkan-1.vkAllocateCommandBuffers")

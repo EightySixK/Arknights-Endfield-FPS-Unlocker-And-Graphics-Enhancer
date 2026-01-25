@@ -4,14 +4,10 @@
 #include <string>
 #include <windows.h>
 
-// Required export for import injection (vulkan-1.dll imports this)
-extern "C" __declspec(dllexport) void DummyExport() {
-  // This function exists only to satisfy the import table
-  // The actual work is done in DllMain
-}
+extern "C" __declspec(dllexport) void DummyExport() {}
 
 // --- Configuration ---
-int g_targetFPS = 300; // Default, can be overridden by fps_config.txt
+int g_targetFPS = 300;
 
 void LoadConfig() {
   char path[MAX_PATH];
@@ -29,8 +25,10 @@ void LoadConfig() {
   if (config.is_open()) {
     config >> g_targetFPS;
     config.close();
-    // Allow -1 (unlimited) or 30-1000
-    if (g_targetFPS != -1 && (g_targetFPS < 30 || g_targetFPS > 1000)) {
+
+    if (g_targetFPS == -1) {
+      g_targetFPS = 9999;
+    } else if (g_targetFPS < 30 || g_targetFPS > 1000) {
       g_targetFPS = 300;
     }
   }
@@ -70,9 +68,7 @@ struct Il2CppMethodInfo {
 typedef void (*tSetTargetFrameRate)(int fps);
 tSetTargetFrameRate oSetTargetFrameRate = NULL;
 
-void hkSetTargetFrameRate(int fps) {
-  oSetTargetFrameRate(g_targetFPS); // Use configured FPS
-}
+void hkSetTargetFrameRate(int fps) { oSetTargetFrameRate(g_targetFPS); }
 
 void ResolveIl2Cpp() {
   hGameAssembly = GetModuleHandleW(L"GameAssembly.dll");
@@ -100,7 +96,6 @@ void ApplyFPSSettings() {
   if (!g_initialized || !il2cpp_runtime_invoke)
     return;
 
-  // Force configured FPS
   if (g_setTargetFrameRateMethod) {
     void *params[] = {&g_targetFPS};
     il2cpp_runtime_invoke(g_setTargetFrameRateMethod, NULL, params, NULL);
@@ -117,7 +112,7 @@ void ApplyFPSSettings() {
 // Background thread that continuously enforces FPS
 DWORD WINAPI FPSEnforcerThread(LPVOID lpParam) {
   while (true) {
-    Sleep(1000); // Check every second
+    Sleep(5000); // Check every 5 seconds
     ApplyFPSSettings();
   }
   return 0;
@@ -223,6 +218,15 @@ DWORD WINAPI h_GetFileAttributesW(LPCWSTR lpFileName) {
 }
 
 void Setup() {
+  // Prevent double execution
+  HANDLE hMutex = CreateMutexA(
+      NULL, TRUE, "Local\\ArknightsEndfieldFPSUnlocker_InstanceGuard");
+  if (GetLastError() == ERROR_ALREADY_EXISTS) {
+    if (hMutex)
+      CloseHandle(hMutex);
+    return;
+  }
+
   // Load config first
   LoadConfig();
 
@@ -238,7 +242,6 @@ void Setup() {
   }
   MH_EnableHook(MH_ALL_HOOKS);
 
-  // Wait for game to fully initialize
   Sleep(15000);
 
   ResolveIl2Cpp();
