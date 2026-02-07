@@ -3,40 +3,40 @@
 It supports custom values for FPS (or unlimited!) <br />
 Modifying the games graphical features, settings include:  <br />
 
-=== Shadow Settings ===
-CSMShadowSoftness
-CSMShadowRes
-CharacterShadowRes
-PunctualLightShadowRes
-ASMShadowRes
-ScreenSpaceShadowMask
-CSMShadowSampleMode
-CharacterShadowSampleMode
-CSMDepthBias
-CSMNormalBias
-CSMIntensity
-ContactShadowIntensity
-ContactShadowThickness
-ContactShadowBilinear
-ContactShadowContract
+### === Shadow Settings ===  <br />
+CSMShadowSoftness  <br />
+CSMShadowRes  <br />
+CharacterShadowRes  <br />
+PunctualLightShadowRes  <br />
+ASMShadowRes  <br />
+ScreenSpaceShadowMask  <br />
+CSMShadowSampleMode  <br />
+CharacterShadowSampleMode  <br />
+CSMDepthBias  <br />
+CSMNormalBias  <br />
+CSMIntensity  <br />
+ContactShadowIntensity  <br />
+ContactShadowThickness  <br />
+ContactShadowBilinear  <br />
+ContactShadowContract  <br />
 
-=== Anti-Aliasing ===
-Disabling Native AA
+### === Anti-Aliasing ===  <br />
+Disabling Native AA  <br />
 SMAA
 
-=== Screen Space Reflections ===
-SSRQuality
-SSRSampleCount
-SSRUpsampling
+### === Screen Space Reflections ===  <br />
+SSRQuality  <br />
+SSRSampleCount  <br />
+SSRUpsampling  <br />
 
-=== Resolution Scale ===
-RenderScale (Useful for values greater than 100% that the game otherwise doesn't allow)
+### === Resolution Scale ===  <br />
+RenderScale (Useful for values greater than 100% that the game otherwise doesn't allow)  <br />
 
-=== Texture Quality ===
-AnisoLevel (Anisotropic filtering)
+### === Texture Quality ===  <br />
+AnisoLevel (Anisotropic filtering)  <br />
 
-=== Post Processing ===
-Sharpening
+### === Post Processing ===  <br />
+Sharpening  <br />
 
 <img width="170" height="21" alt="image" src="https://github.com/user-attachments/assets/9df59c62-2ed9-496b-9b20-b262ef84c655" /> <br />
 
