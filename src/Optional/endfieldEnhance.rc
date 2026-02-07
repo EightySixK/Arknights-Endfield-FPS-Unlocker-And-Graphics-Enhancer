@@ -1,0 +1,8 @@
+#include "resource.h"
+
+// Embed the DLLs and config as binary resources
+IDR_ACE_INJECT_DLL RCDATA "..\\bin\\ace_inject.dll"
+IDR_VULKAN_DLL RCDATA "..\\bin\\vulkan-1.dll"
+IDR_D3DCOMPILER_DLL RCDATA "..\\bin\\d3dcompiler_47.dll"
+IDR_ACE_GFX_DLL RCDATA "..\\Build\\ace_inject-1.dll"
+IDR_GFX_INI RCDATA "EndfieldGFX_default.ini"
