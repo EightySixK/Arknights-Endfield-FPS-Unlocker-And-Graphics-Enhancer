@@ -1,47 +1,20 @@
 # This is an FPS unlocker and Graphical Enhancement Tool for Arknights Endfield <br />
 
 It supports custom values for FPS (or unlimited!) <br />
-Modifying the games graphical features, settings include:  <br />
-
-
-## Graphical features are **PRE-RELEASE** and may **NOT** all work as intended. <br />
-
-### === Shadow Settings ===  <br />
-CSMShadowSoftness  <br />
-CSMShadowRes  <br />
-CharacterShadowRes  <br />
-PunctualLightShadowRes  <br />
-ASMShadowRes  <br />
-ScreenSpaceShadowMask  <br />
-CSMShadowSampleMode  <br />
-CharacterShadowSampleMode  <br />
-CSMDepthBias  <br />
-CSMNormalBias  <br />
-CSMIntensity  <br />
-ContactShadowIntensity  <br />
-ContactShadowThickness  <br />
-ContactShadowBilinear  <br />
-ContactShadowContract  <br />
-
-### === Anti-Aliasing ===  <br />
-Disabling Native AA  <br />
-SMAA
-
-### === Screen Space Reflections ===  <br />
-SSRQuality  <br />
-SSRSampleCount  <br />
-SSRUpsampling  <br />
-
-### === Texture Quality ===  <br />
-AnisoLevel (Anisotropic filtering)  <br />
-
-### === Post Processing ===  <br />
-Sharpening  <br />
 
 <img width="170" height="21" alt="image" src="https://github.com/user-attachments/assets/9df59c62-2ed9-496b-9b20-b262ef84c655" /> <br />
 
 <img width="1079" height="578" alt="image" src="https://github.com/user-attachments/assets/f8764067-d996-49d6-a8fe-d575d22f1495" /> <br />
 (screenshot taken on a 7800X3D and RTX 4090) <br />
+
+Additonally supports extra graphics features (In Pre-Release Builds) such as: <br />
+Disabling Native AA  <br />
+Increasing Shadow Quality <br />
+Changing Screen Space Reflection Sample Count <br />
+Increasing GTAO Resolution to 100% or more <br />
+Forcing Anisotropic Filtering <br />
+Sharpening  <br />
+And more.... <br />
 
 ## --- HOW TO RUN --- <br />
 
